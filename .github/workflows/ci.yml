@@ -23,7 +23,7 @@ jobs:
           echo 'secret- ${{ secrets.APP_KEY }}'
 
       - name: Create comment
-        if: ${{github.event.pull_request.merged && github.event.pull_request.base.ref == 'main1' }}
+        if: ${{github.event.pull_request.merged && github.event.pull_request.base.ref == 'main' }}
         uses: peter-evans/create-or-update-comment@v1
         env:
             GEN_TOKEN: ${{ secrets.APP_KEY }}
