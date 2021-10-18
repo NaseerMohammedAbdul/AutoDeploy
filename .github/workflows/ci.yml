@@ -17,7 +17,6 @@ jobs:
           echo '${{toJson(github.event.pull_request)}}'
           echo ${{github.event.pull_request.number}}
           echo ${{github.event.pull_request.merged}}
-          echo ${{github.event.pull_request.state}}
           echo ${{github.event.pull_request.head.ref}}          
           
       - name: Create comment
