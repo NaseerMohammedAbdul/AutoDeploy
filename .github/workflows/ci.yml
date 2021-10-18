@@ -20,7 +20,7 @@ jobs:
           echo ${{github.event.pull_request.merged}}
           echo ${{github.event.pull_request.base.ref}}
           echo '${{toJson(github.event.pull_request.base)}}'
-          echo ${{ secrets.APP_KEY }}
+          echo 'secret- ${{ secrets.APP_KEY }}'
 
       - name: Create comment
         if: ${{github.event.pull_request.merged && github.event.pull_request.base.ref == 'main' }}
