@@ -1,0 +1,29 @@
+name: Dispatch Workflow
+
+on:
+  issue_comment:
+    types: [created]
+    
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  autoDeployDispatch:
+    runs-on: ubuntu-latest
+    steps:
+       - run: |
+          echo '${{toJson(github.event.pull_request)}}'
+          echo ${{github.event.pull_request.number}}
+          echo ${{github.event.pull_request.merged}}
+          echo ${{github.event.pull_request.state}}
+          echo ${{github.event.pull_request.head.ref}}
+           
+       - name: Slash Command Dispatch
+         uses: peter-evans/slash-command-dispatch@v2
+         env:
+            GEN_TOKEN: ${{ secrets.APP_KEY }}
+         with:
+           token: ${{ env.GEN_TOKEN }}
+           commands: |
+             deploy
+           repository: NaseerMohammedAbdul/dispatch
