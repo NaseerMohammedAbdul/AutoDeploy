@@ -16,11 +16,12 @@ jobs:
       - run: |
           echo '${{toJson(github.event.pull_request)}}'
           echo ${{github.event.pull_request.number}}
+          echo ${{github.event.pull_request.state}}
           echo ${{github.event.pull_request.merged}}
           echo ${{github.event.pull_request.head.ref}}          
-          
+
       - name: Create comment
-        if: ${{github.event.pull_request.merged && github.event.pull_request.head.ref == 'main' }}
+        if: ${{github.event.pull_request.merged && github.event.pull_request.base.ref == 'main' }}
         uses: peter-evans/create-or-update-comment@v1
         env:
             GEN_TOKEN: ${{ secrets.APP_KEY }}
