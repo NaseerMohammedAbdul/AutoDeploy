@@ -19,6 +19,7 @@ jobs:
           echo ${{github.event.pull_request.state}}
           echo ${{github.event.pull_request.merged}}
           echo ${{github.event.pull_request.base.ref}}
+          echo '${{toJson(github.event.pull_request.base)}}'
           echo ${{ secrets.APP_KEY }}
 
       - name: Create comment
