@@ -1,7 +1,6 @@
 on: 
-  push:
-    branches:
-      - '*'     
+  milestone:
+    types: [closed]
 name: Milestone Closure
 jobs:
   release-notes:
